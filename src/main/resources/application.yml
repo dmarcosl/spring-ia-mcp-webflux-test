@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: demo-mcp
+  ai:
+    mcp:
+      server:
+        name: demo-mcp
+        version: 0.1.0
+        type: ASYNC
+        protocol: streamable
+        streamable-http:
+          mcp-endpoint: /mcp
+
+  r2dbc:
+    url: r2dbc:h2:mem:///mcptest;DB_CLOSE_DELAY=-1
+    username: sa
+    password:
+    pool:
+      enabled: true
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
+
+server:
+  port: 8080
+  error:
+    include-message: always
